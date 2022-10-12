@@ -1,69 +1,361 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { ResponsiveLine } from '@nivo/line'
 
 export default function Home() {
+
+  const data = [
+    {
+      "id": "japan",
+      "color": "hsl(194, 70%, 50%)",
+      "data": [
+        {
+          "x": "plane",
+          "y": 120
+        },
+        {
+          "x": "helicopter",
+          "y": 6
+        },
+        {
+          "x": "boat",
+          "y": 201
+        },
+        {
+          "x": "train",
+          "y": 186
+        },
+        {
+          "x": "subway",
+          "y": 4
+        },
+        {
+          "x": "bus",
+          "y": 150
+        },
+        {
+          "x": "car",
+          "y": 243
+        },
+        {
+          "x": "moto",
+          "y": 100
+        },
+        {
+          "x": "bicycle",
+          "y": 138
+        },
+        {
+          "x": "horse",
+          "y": 241
+        },
+        {
+          "x": "skateboard",
+          "y": 91
+        },
+        {
+          "x": "others",
+          "y": 102
+        }
+      ]
+    },
+    {
+      "id": "france",
+      "color": "hsl(224, 70%, 50%)",
+      "data": [
+        {
+          "x": "plane",
+          "y": 51
+        },
+        {
+          "x": "helicopter",
+          "y": 126
+        },
+        {
+          "x": "boat",
+          "y": 273
+        },
+        {
+          "x": "train",
+          "y": 249
+        },
+        {
+          "x": "subway",
+          "y": 66
+        },
+        {
+          "x": "bus",
+          "y": 56
+        },
+        {
+          "x": "car",
+          "y": 296
+        },
+        {
+          "x": "moto",
+          "y": 87
+        },
+        {
+          "x": "bicycle",
+          "y": 285
+        },
+        {
+          "x": "horse",
+          "y": 194
+        },
+        {
+          "x": "skateboard",
+          "y": 28
+        },
+        {
+          "x": "others",
+          "y": 72
+        }
+      ]
+    },
+    {
+      "id": "us",
+      "color": "hsl(257, 70%, 50%)",
+      "data": [
+        {
+          "x": "plane",
+          "y": 37
+        },
+        {
+          "x": "helicopter",
+          "y": 74
+        },
+        {
+          "x": "boat",
+          "y": 275
+        },
+        {
+          "x": "train",
+          "y": 58
+        },
+        {
+          "x": "subway",
+          "y": 226
+        },
+        {
+          "x": "bus",
+          "y": 187
+        },
+        {
+          "x": "car",
+          "y": 164
+        },
+        {
+          "x": "moto",
+          "y": 36
+        },
+        {
+          "x": "bicycle",
+          "y": 247
+        },
+        {
+          "x": "horse",
+          "y": 47
+        },
+        {
+          "x": "skateboard",
+          "y": 237
+        },
+        {
+          "x": "others",
+          "y": 55
+        }
+      ]
+    },
+    {
+      "id": "germany",
+      "color": "hsl(231, 70%, 50%)",
+      "data": [
+        {
+          "x": "plane",
+          "y": 112
+        },
+        {
+          "x": "helicopter",
+          "y": 194
+        },
+        {
+          "x": "boat",
+          "y": 245
+        },
+        {
+          "x": "train",
+          "y": 54
+        },
+        {
+          "x": "subway",
+          "y": 186
+        },
+        {
+          "x": "bus",
+          "y": 134
+        },
+        {
+          "x": "car",
+          "y": 176
+        },
+        {
+          "x": "moto",
+          "y": 298
+        },
+        {
+          "x": "bicycle",
+          "y": 300
+        },
+        {
+          "x": "horse",
+          "y": 78
+        },
+        {
+          "x": "skateboard",
+          "y": 197
+        },
+        {
+          "x": "others",
+          "y": 165
+        }
+      ]
+    },
+    {
+      "id": "norway",
+      "color": "hsl(187, 70%, 50%)",
+      "data": [
+        {
+          "x": "plane",
+          "y": 255
+        },
+        {
+          "x": "helicopter",
+          "y": 230
+        },
+        {
+          "x": "boat",
+          "y": 267
+        },
+        {
+          "x": "train",
+          "y": 157
+        },
+        {
+          "x": "subway",
+          "y": 181
+        },
+        {
+          "x": "bus",
+          "y": 268
+        },
+        {
+          "x": "car",
+          "y": 106
+        },
+        {
+          "x": "moto",
+          "y": 149
+        },
+        {
+          "x": "bicycle",
+          "y": 218
+        },
+        {
+          "x": "horse",
+          "y": 4
+        },
+        {
+          "x": "skateboard",
+          "y": 299
+        },
+        {
+          "x": "others",
+          "y": 287
+        }
+      ]
+    }
+  ]; 
+
+
+
   return (
-    <div className={styles.container}>
+    <div className="w-[100%]">
       <Head>
         <title>Create Next App</title>
         <meta name="description" content="Generated by create next app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <div className="text-xl text-center m-10 font-sans">Twitter Analysis</div>
+      <div className = "h-[350px] w-[800px] m-auto">
+      <ResponsiveLine
+        data={data}
+        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        xScale={{ type: 'point' }}
+        yScale={{
+            type: 'linear',
+            min: 'auto',
+            max: 'auto',
+            stacked: true,
+            reverse: false
+        }}
+        yFormat=" >-.2f"
+        curve="catmullRom"
+        axisTop={null}
+        axisRight={null}
+        axisBottom={{
+            orient: 'bottom',
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: 'transportation',
+            legendOffset: 36,
+            legendPosition: 'middle'
+        }}
+        axisLeft={{
+            orient: 'left',
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: 'count',
+            legendOffset: -40,
+            legendPosition: 'middle'
+        }}
+        pointSize={10}
+        pointColor={{ theme: 'background' }}
+        pointBorderWidth={2}
+        pointBorderColor={{ from: 'serieColor' }}
+        pointLabelYOffset={-12}
+        useMesh={true}
+        legends={[
+            {
+                anchor: 'bottom-right',
+                direction: 'column',
+                justify: false,
+                translateX: 100,
+                translateY: 0,
+                itemsSpacing: 0,
+                itemDirection: 'left-to-right',
+                itemWidth: 80,
+                itemHeight: 20,
+                itemOpacity: 0.75,
+                symbolSize: 12,
+                symbolShape: 'circle',
+                symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                effects: [
+                    {
+                        on: 'hover',
+                        style: {
+                            itemBackground: 'rgba(0, 0, 0, .03)',
+                            itemOpacity: 1
+                        }
+                    }
+                ]
+            }
+        ]}
+    />
+    </div>
     </div>
   )
 }
